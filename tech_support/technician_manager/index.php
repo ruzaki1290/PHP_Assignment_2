@@ -52,6 +52,7 @@
                     }
                 ?>
             </table>
+            <a href="add_technician.php">Add Technician</a>
         </main>   
     </body>
     <?php include '../view/footer.php'; ?> 

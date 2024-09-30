@@ -17,8 +17,8 @@
       <main>
          <h2>Add Contact</h2>
          <div>
-            <form method="post" id="add_contact_form">
-            <div id="name">
+            <form method="post" id="add_product">
+            <div id="product">
             <label>Product Code:</label>
             <input type="text" name="productCode" /><br />
 
@@ -32,7 +32,6 @@
             <input type="date" name="releaseDate" /><br />
          </div>
 
-         <!-- when the user hits submit, he will be redirected to where action is poinitng to(add_contact.php here) -->
          <div id="buttons">
             <label>&nbsp;</label>
             <input type="submit" value="Save Product" /><br />
