@@ -39,6 +39,15 @@
                         echo '<td>'.$technician['email'].'</td>';
                         echo '<td>'.$technician['phone'].'</td>';
                         echo '<td>'.$technician['password'].'</td>';
+                        echo '
+                        <td>
+                            <form method="post" action="delete_technician.php">
+                                <input type="hidden" name="techID" value="'.$technician['techID'].'">
+                                <button>Delete</button>
+                            </form>
+                        </td>';
+
+                    echo '</tr>';
                         
                     }
                 ?>
