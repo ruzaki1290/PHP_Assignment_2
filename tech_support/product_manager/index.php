@@ -19,19 +19,6 @@
                 $statement = $db->prepare($query);
                 $statement->execute();
                 $products = $statement->fetchAll();
-
-
-                $action = filter_input(INPUT_POST, 'action');
-                if ($action === NULL) {
-                    $action = filter_input(INPUT_GET, 'action');
-                    if ($action === NULL) {
-                        $action = 'under_construction';
-                    }
-                }
-
-                if ($action == 'under_construction') {
-                    include('../under_construction.php');
-                }
             ?>
             <table>
                 <tr>
@@ -52,7 +39,7 @@
                         echo '
                             <td>
                                 <form method="post" action="delete_product.php">
-                                    <input type="text" name="productCode" value="'.$product['productCode'].'">
+                                    <input type="hidden" name="productCode" value="'.$product['productCode'].'">
                                     <button>Delete</button>
                                 </form>
                             </td>';
@@ -61,6 +48,8 @@
                     }
                 ?>
             </table>
-        </main>   
+            <a href="add_product.php">Add Product</a>
+        </main>
+        <?php include '../view/footer.php'; ?>   
     </body>
 </html>
