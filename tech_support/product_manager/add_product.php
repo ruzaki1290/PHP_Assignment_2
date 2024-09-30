@@ -12,48 +12,6 @@
       <link rel="stylesheet" type="text/css"
             href="/Rus_PHP_2/tech_support/main.css">
    </head>
-   <?php
-      if ($_SERVER["REQUEST_METHOD"] == "POST") {
-         require_once('../model/database.php');
-         var_dump($_POST);
-
-         $productCode = $_POST['productCode'];
-         $name = $_POST['name'];
-         $version = $_POST['version'];
-         $releaseDate = $_POST['releaseDate'];
-
-         // validate form data
-         if (empty($productCode) || empty($name) || empty($version) || empty($releaseDate)) {
-            echo "All fields are required.";
-            exit;
-         }
-                  
-         try {
-            // add the contact to the database
-            $query = 'INSERT INTO products
-               (productCode, name, version, releaseDate)
-               VALUES
-               (:productCode, :name, :version, :releaseDate)';
-            
-            $statement = $db->prepare($query);
-            $statement->bindValue(':productCode', $productCode);
-            $statement->bindValue(':name', $name);
-            $statement->bindValue(':version', $version);
-            $statement->bindValue(':releaseDate', $releaseDate);
-
-            // execute the statement
-            $statement->execute();
-            // close the cursor
-            $statement->closeCursor();
-            // redirect to product list
-                  header("Location: index.php");
-                  exit;
-               } catch (PDOException $e) {
-                  echo "Error: " . $e->getMessage();
-                  exit;
-               }    
-      }
-   ?>
    <body>
    <?php include '../view/header.php'; ?>
       <main>
@@ -84,6 +42,48 @@
 
          <p><a href="index.php">View Product List</a></p>
       </main>
-      <?php include '../view/footer.php'; ?> 
+      <?php
+         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            require_once('../model/database.php');
+            var_dump($_POST);
+
+            $productCode = $_POST['productCode'];
+            $name = $_POST['name'];
+            $version = $_POST['version'];
+            $releaseDate = $_POST['releaseDate'];
+
+            // validate form data
+            if (empty($productCode) || empty($name) || empty($version) || empty($releaseDate)) {
+               echo "All fields are required.";
+               exit;
+            }
+                     
+            try {
+               // add the contact to the database
+               $query = 'INSERT INTO products
+                  (productCode, name, version, releaseDate)
+                  VALUES
+                  (:productCode, :name, :version, :releaseDate)';
+               
+               $statement = $db->prepare($query);
+               $statement->bindValue(':productCode', $productCode);
+               $statement->bindValue(':name', $name);
+               $statement->bindValue(':version', $version);
+               $statement->bindValue(':releaseDate', $releaseDate);
+
+               // execute the statement
+               $statement->execute();
+               // close the cursor
+               $statement->closeCursor();
+               // redirect to product list
+                     header("Location: index.php");
+                     exit;
+                  } catch (PDOException $e) {
+                     echo "Error: " . $e->getMessage();
+                     exit;
+                  }    
+         }
+      ?>
    </body>
+   <?php include '../view/footer.php'; ?> 
 </html>

@@ -49,7 +49,7 @@
                 ?>
             </table>
             <a href="add_product.php">Add Product</a>
-        </main>
-        <?php include '../view/footer.php'; ?>   
+        </main>   
     </body>
+    <?php include '../view/footer.php'; ?> 
 </html>
