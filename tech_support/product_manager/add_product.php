@@ -15,7 +15,7 @@
    <body>
    <?php include '../view/header.php'; ?>
       <main>
-         <h2>Add Contact</h2>
+         <h2>Add Product</h2>
          <div>
             <form method="post" id="add_product">
             <div id="product">
